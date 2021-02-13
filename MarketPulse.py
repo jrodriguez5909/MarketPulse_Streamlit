@@ -66,8 +66,9 @@ if download:
     linko = f'<a href="data:file/csv;base64,{b64}" download="Historical_Stock_Prices.csv">Download full csv file</a>'
     st.markdown(linko, unsafe_allow_html=True)
 
-
     df_pct = df_download.apply(lambda x: x.div(x.iloc[0]).subtract(1))
+
+    st.header("Performance (%) from Selected Start to End Dates")
     st.line_chart(df_pct)
 
     # df_pct = df_download.apply(lambda x: x.div(x.iloc[0]).subtract(1))
