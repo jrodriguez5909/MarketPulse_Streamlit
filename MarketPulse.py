@@ -12,7 +12,7 @@ from bokeh.plotting import figure, show, output_file
 st.write("""
 # Historical Stock Price Downloader
 1. Populate the **ticker(s)** box on the left with the ticker symbols you'd like historical information for, 
-with each ticker symbol separated by a comma e.g., AAPL, GOOG, TSLA. Ticker symbols should be consistent with those shown in Yahoo Finance e.g., S&P500 = ^GSPC
+with each ticker symbol separated by a comma e.g., AAPL, GOOG, TSLA. Ticker symbols should be consistent with those shown in Yahoo Finance e.g., S&P500 = ^GSPC.
 2. Then provide the **time period** you're interested in.
 3. Click **grab historical stock info** below for the historical info in a csv file.
 """)
