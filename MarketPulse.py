@@ -2,15 +2,19 @@ import base64
 import yfinance as yf
 import streamlit as st
 import datetime as dt
+import altair as alt
+import pandas as pd
+import numpy as np
 
-
-yf.pdr_override()
+from bokeh.palettes import Spectral11
+from bokeh.plotting import figure, show, output_file
 
 st.write("""
 # Historical Stock Price Downloader
-1. Populate the **ticker(s)** box on the left with the ticker symbols you'd like historical information for, with each ticker symbol separated by a comma e.g., AAPL, GOOG, TSLA. 
+1. Populate the **ticker(s)** box on the left with the ticker symbols you'd like historical information for, 
+with each ticker symbol separated by a comma e.g., AAPL, GOOG, TSLA. Ticker symbols should be consistent with those shown in Yahoo Finance e.g., S&P500 = ^GSPC
 2. Then provide the **time period** you're interested in.
-3. Click **download** below for the historical info in a csv file.
+3. Click **grab historical stock info** below for the historical info in a csv file.
 """)
 
 st.sidebar.header('User Input Parameters')
@@ -50,13 +54,26 @@ def user_input_features():
 
 symbol, start, end = user_input_features()
 
-download = st.button('Download csv file')
+download = st.button('Grab historical stock info')
 
 if download:
-    'Download Started!'
     Ticker = symbol
     df_download = yf.download(Ticker, start=start, end=end)['Close']
+    df_download.fillna(method='pad', inplace=True)
+    df_download.fillna(method='bfill', inplace=True)
     csv = df_download.to_csv()
     b64 = base64.b64encode(csv.encode()).decode()  # some strings
-    linko = f'<a href="data:file/csv;base64,{b64}" download="Historical_Stock_Prices.csv">Download csv file</a>'
+    linko = f'<a href="data:file/csv;base64,{b64}" download="Historical_Stock_Prices.csv">Download full csv file</a>'
     st.markdown(linko, unsafe_allow_html=True)
+
+
+    df_pct = df_download.apply(lambda x: x.div(x.iloc[0]).subtract(1))
+    st.line_chart(df_pct)
+
+    # df_pct = df_download.apply(lambda x: x.div(x.iloc[0]).subtract(1))
+    # st.line_chart(df_pct)
+
+    st.write("""
+    • Data preview - click "Download full csv file" url above for full data dump:
+    """)
+    st.dataframe(df_download.head(5))
