@@ -4,7 +4,7 @@
   <img src="./img/MarketPulse_Streamlit.png" alt="Statoscope example" width="650">
 </p>
 
-[This package scrapes stock price data from Yahoo! Finance through the `yfinance` Python library.|https://jrodriguez5909-marketpulse-streamlit-marketpulse-l8r1k5.streamlitapp.com/] The user can grab historical stock prices through the Streamlit frontend by specifying the ticker symbols _(symbols must be consistent with how they're shown in Yahoo! Finance)_ and the desired timeframe. 
+[This package scrapes stock price data from Yahoo! Finance through the `yfinance` Python library.](https://jrodriguez5909-marketpulse-streamlit-marketpulse-l8r1k5.streamlitapp.com/) The user can grab historical stock prices through the Streamlit frontend by specifying the ticker symbols _(symbols must be consistent with how they're shown in Yahoo! Finance)_ and the desired timeframe. 
 
 ## Running this app on your local host
 
