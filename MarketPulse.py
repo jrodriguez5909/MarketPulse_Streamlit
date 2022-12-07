@@ -2,12 +2,12 @@ import base64
 import yfinance as yf
 import streamlit as st
 import datetime as dt
-import altair as alt
-import pandas as pd
-import numpy as np
-
-from bokeh.palettes import Spectral11
-from bokeh.plotting import figure, show, output_file
+# import altair as alt
+# import pandas as pd
+# import numpy as np
+#
+# from bokeh.palettes import Spectral11
+# from bokeh.plotting import figure, show, output_file
 
 st.write("""
 # Historical Stock Price Downloader

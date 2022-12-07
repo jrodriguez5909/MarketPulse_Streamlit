@@ -1,4 +1,3 @@
 yfinance==0.1.67
 matplotlib~=3.3.3
 streamlit~=0.76.0
-bokeh~=2.2.3
